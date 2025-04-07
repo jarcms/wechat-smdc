@@ -1,0 +1,77 @@
+<!-- components/cart-bar/cart-bar.wxml -->
+<view class="cart-bar safe-bottom">
+  <!-- 购物车按钮区域 -->
+  <view class="cart-left" bindtap="showCart">
+    <view class="cart-icon-wrapper {{totalQuantity > 0 ? 'has-items' : ''}}">
+      <icon type="shopping" size="25" color="{{totalQuantity > 0 ? '#ffffff' : '#333333'}}"/>
+      <view class="cart-count" wx:if="{{totalQuantity > 0}}">{{totalQuantity}}</view>
+    </view>
+    <view class="cart-info">
+      <block wx:if="{{totalQuantity > 0}}">
+        <view class="cart-price price">{{totalAmount}}</view>
+      </block>
+      <block wx:else>
+        <view class="cart-empty">购物车为空</view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 结算按钮 -->
+  <view class="cart-right">
+    <button 
+      class="checkout-btn {{totalQuantity > 0 ? 'active' : 'disabled'}}" 
+      bindtap="goToOrder"
+    >去结算</button>
+  </view>
+  
+  <!-- 购物车弹出层 -->
+  <view class="cart-popup" wx:if="{{showCartPopup}}">
+    <view class="cart-mask" bindtap="closeCart"></view>
+    <view class="cart-content">
+      <!-- 头部 -->
+      <view class="cart-header">
+        <view class="cart-title">购物车</view>
+        <view class="cart-clear" bindtap="clearCart">
+          <image class="cart-clear-icon" src="/images/trash.png" mode="aspectFit"></image>
+          <text>清空</text>
+        </view>
+      </view>
+      
+      <!-- 购物车列表 -->
+      <scroll-view scroll-y class="cart-list">
+        <view class="cart-item" wx:for="{{cartList}}" wx:key="index">
+          <view class="item-info">
+            <view class="item-name">{{item.name}}</view>
+            <view class="item-spec" wx:if="{{item.specificationName}}">规格：{{item.specificationName}}</view>
+            <view class="item-price price">{{item.price}}</view>
+          </view>
+          
+          <view class="item-action">
+            <view 
+              class="quantity-btn minus" 
+              data-id="{{item.id}}" 
+              data-specid="{{item.specificationId}}"
+              bindtap="decreaseQuantity"
+            >-</view>
+            <view class="quantity-num">{{item.quantity}}</view>
+            <view 
+              class="quantity-btn plus" 
+              data-id="{{item.id}}" 
+              data-specid="{{item.specificationId}}"
+              bindtap="increaseQuantity"
+            >+</view>
+          </view>
+        </view>
+      </scroll-view>
+      
+      <!-- 底部结算栏 -->
+      <view class="cart-footer">
+        <view class="cart-total">
+          <text>合计：</text>
+          <view class="price">{{totalAmount}}</view>
+        </view>
+        <button class="submit-btn" bindtap="goToOrder">去结算</button>
+      </view>
+    </view>
+  </view>
+</view> 

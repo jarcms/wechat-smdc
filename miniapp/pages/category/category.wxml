@@ -1,0 +1,61 @@
+<!-- pages/category/category.wxml -->
+<view class="container">
+  <!-- 分类与菜品列表 -->
+  <view class="menu-container">
+    <!-- 左侧分类列表 -->
+    <scroll-view scroll-y class="category-list">
+      <view 
+        class="category-item {{item.id === currentCategory ? 'active' : ''}}" 
+        wx:for="{{categories}}" 
+        wx:key="id"
+        bindtap="switchCategory"
+        data-id="{{item.id}}"
+      >
+        <view class="category-name">{{item.name}}</view>
+      </view>
+    </scroll-view>
+    
+    <!-- 右侧菜品列表 -->
+    <scroll-view 
+      scroll-y 
+      class="dish-list" 
+      scroll-top="{{scrollTop}}"
+      scroll-with-animation="true"
+    >
+      <!-- 加载中提示 -->
+      <view class="loading" wx:if="{{isLoading}}">
+        <view class="loading-icon"></view>
+        <text>加载中...</text>
+      </view>
+      
+      <!-- 空状态提示 -->
+      <view class="empty-state" wx:if="{{!categoryList.length || !dishList.length}}">
+        <view class="empty-icon">
+          <icon type="info" size="45" color="#cccccc"/>
+        </view>
+        <view class="empty-text">{{!categoryList.length ? '暂无分类信息' : '暂无菜品信息'}}</view>
+      </view>
+      
+      <!-- 菜品列表 -->
+      <view class="dish-item" wx:for="{{dishes}}" wx:key="id" bindtap="onTapDish" data-id="{{item.id}}">
+        <image class="dish-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="dish-info">
+          <view class="dish-name">{{item.name}}</view>
+          <view class="dish-desc" wx:if="{{item.description}}">{{item.description}}</view>
+          <view class="dish-price-action">
+            <view class="dish-price price">{{item.price}}</view>
+            <view class="dish-add" catchtap="onAddToCart" data-index="{{index}}">
+              <view class="add-icon">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 底部安全区域 -->
+      <view class="safe-bottom-area"></view>
+    </scroll-view>
+  </view>
+  
+  <!-- 购物车组件 -->
+  <cart-bar id="cartBar" table-id="{{tableId}}"></cart-bar>
+</view> 

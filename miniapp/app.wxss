@@ -1,0 +1,113 @@
+/**app.wxss**/
+@import "./styles/theme.wxss";
+
+page {
+  background-color: var(--bg-color);
+  font-size: 28rpx;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    'Segoe UI', Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 通用容器 */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 100rpx; /* 为底部Tab栏留出空间 */
+}
+
+/* 页面主体 */
+.content {
+  flex: 1;
+  padding: 20rpx;
+}
+
+/* 无数据状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.empty-icon {
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  color: var(--text-hint);
+  font-size: 28rpx;
+}
+
+/* 按钮样式重置 */
+button {
+  background: initial;
+  line-height: inherit;
+  border-radius: 8rpx;
+  font-weight: normal;
+}
+
+button::after {
+  border: none;
+}
+
+button.button-hover {
+  opacity: 0.8;
+}
+
+/* 底部安全区适配 */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 底部固定操作栏 */
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-card);
+  padding: 20rpx 30rpx;
+  box-shadow: 0 -2rpx 10rpx var(--shadow-color);
+  z-index: 100;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+/* 加载中动画 */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx 0;
+}
+
+.loading text {
+  color: var(--text-hint);
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+/* 价格文本样式 */
+.price {
+  color: var(--danger-color);
+  font-weight: bold;
+}
+
+.price::before {
+  content: '¥';
+  font-size: 0.8em;
+  font-weight: normal;
+  margin-right: 2rpx;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+} 

@@ -1,0 +1,107 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Vue Admin ###
+# 依赖
+/admin/node_modules
+/admin/.pnpm-debug.log*
+/admin/yarn.lock
+/admin/package-lock.json
+/admin/pnpm-lock.yaml
+
+# 打包输出
+/admin/dist
+/admin/dist-ssr
+
+# 本地环境文件
+/admin/*.local
+/admin/.env.local
+/admin/.env.*.local
+
+# 日志
+/admin/npm-debug.log*
+/admin/yarn-debug.log*
+/admin/yarn-error.log*
+/admin/pnpm-debug.log*
+
+# 编辑器目录和文件
+/admin/.vscode/*
+/admin/!.vscode/extensions.json
+/admin/.idea
+/admin/*.suo
+/admin/*.ntvs*
+/admin/*.njsproj
+/admin/*.sln
+/admin/*.sw?
+
+### 微信小程序 ###
+# 小程序开发工具本地配置文件
+/miniapp/project.config.json
+/miniapp/project.private.config.json
+
+# 小程序打包目录
+/miniapp/dist/
+/miniapp/miniprogram_npm/
+
+# 小程序本地设置
+/miniapp/sitemap.json
+
+# 依赖
+/miniapp/node_modules/
+/miniapp/package-lock.json
+/miniapp/yarn.lock
+
+# 日志
+/miniapp/npm-debug.log*
+/miniapp/yarn-debug.log*
+/miniapp/yarn-error.log*
+
+### 通用 ###
+# 操作系统
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 临时文件
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+
+# 环境配置
+.env
+.env.*
+!.env.example

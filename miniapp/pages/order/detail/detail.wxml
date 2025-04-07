@@ -1,0 +1,77 @@
+<!-- pages/order/detail/detail.wxml -->
+<view class="container" wx:if="{{!loading}}">
+  <!-- 订单状态 -->
+  <view class="status-bar" style="background-color: {{statusMap[orderDetail.status].color}}">
+    <view class="status-text">{{statusMap[orderDetail.status].text}}</view>
+    <view class="order-number">订单号: {{orderDetail.number}}</view>
+  </view>
+  
+  <!-- 桌位信息 -->
+  <view class="section table-info">
+    <view class="section-title">桌位信息</view>
+    <view class="table-content">
+      <view class="table-name">{{orderDetail.tableName}}</view>
+      <view class="table-code">桌号：{{orderDetail.tableCode}}</view>
+    </view>
+  </view>
+  
+  <!-- 订单信息 -->
+  <view class="section order-info">
+    <view class="section-title">订单信息</view>
+    <view class="info-item">
+      <text class="info-label">下单时间</text>
+      <text class="info-value">{{orderDetail.createTime}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">支付方式</text>
+      <text class="info-value">{{orderDetail.payMethod === 1 ? '微信支付' : '餐后支付'}}</text>
+    </view>
+    <view class="info-item" wx:if="{{orderDetail.payStatus === 1}}">
+      <text class="info-label">支付时间</text>
+      <text class="info-value">{{orderDetail.payTime}}</text>
+    </view>
+    <view class="info-item" wx:if="{{orderDetail.remark}}">
+      <text class="info-label">备注</text>
+      <text class="info-value">{{orderDetail.remark}}</text>
+    </view>
+  </view>
+  
+  <!-- 订单商品列表 -->
+  <view class="section order-items">
+    <view class="section-title">订单商品</view>
+    <view class="item-list">
+      <view class="order-item" wx:for="{{orderDetail.orderDetails}}" wx:key="id">
+        <image class="item-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="item-info">
+          <view class="item-name">{{item.dishName}}</view>
+          <view class="item-spec" wx:if="{{item.specificationName}}">规格：{{item.specificationName}}</view>
+          <view class="item-bottom">
+            <view class="item-price price">{{item.amount}}</view>
+            <view class="item-quantity">x{{item.number}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="order-total">
+      <text>共{{orderDetail.orderDetails.length}}件商品，合计：</text>
+      <view class="total-price price">{{orderDetail.amount}}</view>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="footer-bar safe-bottom" wx:if="{{orderDetail.status === 1}}">
+    <view class="action-btn cancel-btn" bindtap="cancelOrder">取消订单</view>
+    <view class="action-btn pay-btn" bindtap="payOrder">立即支付</view>
+  </view>
+  
+  <!-- 返回按钮 -->
+  <view class="back-btn" wx:if="{{orderDetail.status !== 1}}" bindtap="goToOrderList">返回订单列表</view>
+</view>
+
+<!-- 加载中 -->
+<view class="loading-container" wx:if="{{loading}}">
+  <view class="loading">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+</view> 

@@ -1,0 +1,205 @@
+/* pages/dish/dish.wxss */
+@import "../../styles/theme.wxss";
+
+.container {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  padding-bottom: 100rpx;
+}
+
+/* 加载中 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.loading-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid var(--primary-color-light);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading text {
+  font-size: 28rpx;
+  color: var(--text-hint);
+}
+
+/* 暂无数据 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-state image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-state text {
+  font-size: 28rpx;
+  color: var(--text-hint);
+}
+
+/* 菜品图片 */
+.dish-image {
+  width: 100%;
+  height: 500rpx;
+  display: block;
+}
+
+/* 菜品基本信息 */
+.dish-info {
+  padding: 30rpx;
+  background-color: var(--bg-card);
+}
+
+.dish-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+}
+
+.dish-price {
+  font-size: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.dish-desc {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 区块样式 */
+.section {
+  margin-top: 20rpx;
+  padding: 30rpx;
+  background-color: var(--bg-card);
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 20rpx;
+}
+
+/* 规格选择 */
+.spec-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  width: calc(50% - 20rpx);
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 20rpx;
+  margin: 0 10rpx 20rpx 0;
+  background-color: var(--bg-color);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.spec-item.active {
+  background-color: var(--primary-color-light);
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.spec-price {
+  font-size: 28rpx;
+}
+
+/* 数量控制 */
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-btn {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 8rpx;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.quantity-btn.minus {
+  color: var(--text-secondary);
+}
+
+.quantity-btn.minus.disabled {
+  color: var(--text-disabled);
+}
+
+.quantity-btn.plus {
+  color: var(--primary-color);
+}
+
+.quantity-num {
+  width: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+/* 底部操作栏 */
+.footer-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  background-color: var(--bg-card);
+  display: flex;
+  box-shadow: 0 -2rpx 10rpx var(--shadow-color);
+  z-index: 99;
+}
+
+.action-btn {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.add-cart {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.order-now {
+  background-color: var(--primary-color);
+  color: white;
+} 

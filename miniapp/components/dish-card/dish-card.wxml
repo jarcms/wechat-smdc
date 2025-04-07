@@ -1,0 +1,56 @@
+<!-- components/dish-card/dish-card.wxml -->
+<view class="dish-card {{mode === 'simple' ? 'dish-card-simple' : ''}}" bindtap="onTapDish">
+  <!-- 菜品图片 -->
+  <image class="dish-image" src="{{dish.image}}" mode="aspectFill"></image>
+  
+  <!-- 菜品信息 -->
+  <view class="dish-info">
+    <view class="dish-name text-cut">{{dish.name}}</view>
+    <view class="dish-description text-cut" wx:if="{{dish.description}}">{{dish.description}}</view>
+    
+    <!-- 价格和添加按钮 -->
+    <view class="dish-bottom">
+      <view class="dish-price price">{{dish.price}}</view>
+      <view class="add-btn" catchtap="onAddToCart">
+        <view class="icon">+</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 规格选择对话框 -->
+  <view class="spec-dialog" wx:if="{{showSpecDialog}}">
+    <view class="spec-mask" catchtap="closeSpecDialog"></view>
+    <view class="spec-content">
+      <view class="spec-header">
+        <view class="spec-title">规格选择</view>
+        <view class="spec-close" catchtap="closeSpecDialog">×</view>
+      </view>
+      
+      <view class="spec-name">{{dish.name}}</view>
+      
+      <view class="spec-list">
+        <view class="spec-list-title">规格</view>
+        <view class="spec-items">
+          <view 
+            class="spec-item {{selectedSpecId === item.id ? 'active' : ''}}" 
+            wx:for="{{specifications}}" 
+            wx:key="id"
+            data-id="{{item.id}}"
+            catchtap="selectSpec"
+          >{{item.name}}</view>
+        </view>
+      </view>
+      
+      <view class="quantity-control">
+        <view class="quantity-title">数量</view>
+        <view class="quantity-adjuster">
+          <view class="quantity-btn minus {{quantity <= 1 ? 'disabled' : ''}}" catchtap="decreaseQuantity">-</view>
+          <view class="quantity-display">{{quantity}}</view>
+          <view class="quantity-btn plus" catchtap="increaseQuantity">+</view>
+        </view>
+      </view>
+      
+      <view class="confirm-btn" catchtap="confirmAddToCart">加入购物车</view>
+    </view>
+  </view>
+</view> 

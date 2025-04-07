@@ -1,0 +1,260 @@
+/* components/cart-bar/cart-bar.wxss */
+@import "../../styles/theme.wxss";
+
+.cart-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  background-color: var(--bg-card);
+  display: flex;
+  box-shadow: 0 -2rpx 10rpx var(--shadow-color);
+  z-index: 99;
+}
+
+/* 购物车左侧 */
+.cart-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+  width: 80rpx;
+  height: 80rpx;
+  background-color: var(--bg-color);
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-icon-wrapper.has-items {
+  background-color: var(--primary-color);
+}
+
+.cart-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.cart-count {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  min-width: 36rpx;
+  height: 36rpx;
+  padding: 0 8rpx;
+  background-color: var(--danger-color);
+  color: white;
+  border-radius: 18rpx;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-info {
+  margin-left: 20rpx;
+}
+
+.cart-price {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.cart-empty {
+  color: var(--text-hint);
+  font-size: 28rpx;
+}
+
+/* 购物车右侧 */
+.cart-right {
+  width: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 20rpx;
+}
+
+.checkout-btn {
+  width: 180rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  font-size: 28rpx;
+  line-height: 70rpx;
+  text-align: center;
+}
+
+.checkout-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.checkout-btn.disabled {
+  background-color: var(--text-disabled);
+  color: white;
+}
+
+/* 购物车弹出层 */
+.cart-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.cart-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-mask);
+}
+
+.cart-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-card);
+  border-radius: 24rpx 24rpx 0 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+/* 购物车头部 */
+.cart-header {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.cart-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.cart-clear {
+  display: flex;
+  align-items: center;
+  color: var(--text-hint);
+  font-size: 26rpx;
+}
+
+.cart-clear-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+/* 购物车列表 */
+.cart-list {
+  flex: 1;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.cart-item {
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.item-spec {
+  font-size: 24rpx;
+  color: var(--text-hint);
+  margin-bottom: 8rpx;
+}
+
+.item-price {
+  font-size: 28rpx;
+}
+
+.item-action {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-btn {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.quantity-btn.minus {
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+}
+
+.quantity-btn.plus {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.quantity-num {
+  width: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+/* 购物车底部 */
+.cart-footer {
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid var(--border-color);
+  background-color: var(--bg-card);
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+.cart-total {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.cart-total .price {
+  font-size: 32rpx;
+  margin-left: 10rpx;
+}
+
+.submit-btn {
+  width: 200rpx;
+  height: 80rpx;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 

@@ -1,0 +1,46 @@
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-info-box">
+    <view class="user-info" wx:if="{{isLogin}}">
+      <view class="avatar-placeholder">
+        <icon type="info" size="40" color="#fff"/>
+      </view>
+      <view class="info">
+        <view class="nickname">{{userInfo.nickName || '用户'}}</view>
+        <view class="phone">{{userInfo.phone || '未绑定手机号'}}</view>
+      </view>
+    </view>
+    <view class="user-info" wx:else bindtap="login">
+      <view class="avatar-placeholder">
+        <icon type="info" size="40" color="#fff"/>
+      </view>
+      <view class="info">
+        <view class="nickname">点击登录</view>
+        <view class="phone">登录后体验更多功能</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 菜单列表 -->
+  <view class="menu-list">
+    <view 
+      class="menu-item" 
+      wx:for="{{menuList}}" 
+      wx:key="id" 
+      bindtap="navigateToPage" 
+      data-url="{{item.url}}">
+      <view class="menu-icon">
+        <icon type="{{item.iconType}}" size="24" color="#FF5722"/>
+      </view>
+      <view class="menu-text">{{item.text}}</view>
+      <view class="menu-arrow">
+        <icon type="success" size="18" color="#999"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-btn" wx:if="{{isLogin}}" bindtap="logout">
+    退出登录
+  </view>
+</view> 

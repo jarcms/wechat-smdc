@@ -1,0 +1,104 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部状态栏 -->
+  <view class="status-bar">
+    <view class="scan-status {{isTableScanned ? 'scanned' : ''}}">
+      <block wx:if="{{isTableScanned}}">
+        <text class="table-info">桌号：{{tableCode}}</text>
+        <text class="table-name">{{tableName}}</text>
+      </block>
+      <block wx:else>
+        <text>请扫描桌面二维码</text>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 轮播图 -->
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
+    <swiper-item wx:for="{{banners}}" wx:key="id" bindtap="onBannerClick" data-index="{{index}}">
+      <image src="{{item.imageUrl}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+  
+  <!-- 操作区域 -->
+  <view class="action-area">
+    <!-- 桌位扫描区 -->
+    <view class="scan-area">
+      <view class="scan-title">{{isTableScanned ? '已扫描桌位' : '请先扫描桌位二维码'}}</view>
+      <view class="scan-desc">{{isTableScanned ? '桌号：' + tableCode : '扫描桌面上的二维码开始点餐'}}</view>
+      <button class="scan-btn" bindtap="scanTable">
+        <view class="icon">
+          <icon type="search" size="25" color="#ffffff"/>
+        </view>
+        <text>{{isTableScanned ? '重新扫描' : '扫码点餐'}}</text>
+      </button>
+    </view>
+    
+    <!-- 快捷入口 -->
+    <view class="quick-entry">
+      <view class="entry-item" bindtap="goToOrder">
+        <view class="entry-icon">
+          <icon type="success" size="30" color="#FF5722"/>
+        </view>
+        <text>浏览菜单</text>
+      </view>
+      
+      <view class="entry-item" bindtap="scanTable">
+        <view class="entry-icon">
+          <icon type="search" size="30" color="#FF5722"/>
+        </view>
+        <text>扫桌码</text>
+      </view>
+      
+      <navigator url="/pages/order/list/list" class="entry-item">
+        <view class="entry-icon">
+          <icon type="info" size="30" color="#FF5722"/>
+        </view>
+        <text>我的订单</text>
+      </navigator>
+      
+      <navigator url="/pages/user/user" open-type="switchTab" class="entry-item">
+        <view class="entry-icon">
+          <icon type="waiting" size="30" color="#FF5722"/>
+        </view>
+        <text>个人中心</text>
+      </navigator>
+    </view>
+  </view>
+  
+  <!-- 推荐菜品 -->
+  <view class="recommend">
+    <view class="section-title">今日推荐</view>
+    <view class="recommend-list">
+      <!-- 这里可以使用自定义组件dish-card -->
+      <navigator url="/pages/dish/dish?id=1" class="recommend-item">
+        <image class="recommend-img" src="/images/dish1.jpg" mode="aspectFill"></image>
+        <view class="recommend-info">
+          <view class="recommend-name">香煎牛排</view>
+          <view class="recommend-price price">88.00</view>
+        </view>
+      </navigator>
+      
+      <navigator url="/pages/dish/dish?id=2" class="recommend-item">
+        <image class="recommend-img" src="/images/dish2.jpg" mode="aspectFill"></image>
+        <view class="recommend-info">
+          <view class="recommend-name">意式披萨</view>
+          <view class="recommend-price price">68.00</view>
+        </view>
+      </navigator>
+      
+      <navigator url="/pages/dish/dish?id=3" class="recommend-item">
+        <image class="recommend-img" src="/images/dish3.jpg" mode="aspectFill"></image>
+        <view class="recommend-info">
+          <view class="recommend-name">法式鹅肝</view>
+          <view class="recommend-price price">118.00</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  
+  <!-- 底部版权 -->
+  <view class="footer">
+    <text>© 2023 扫码点餐小程序</text>
+  </view>
+</view> 

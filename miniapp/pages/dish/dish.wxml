@@ -1,0 +1,62 @@
+<!-- pages/dish/dish.wxml -->
+<view class="container">
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+    <text>加载中...</text>
+  </view>
+  
+  <!-- 菜品详情内容 -->
+  <block wx:if="{{!isLoading && dish}}">
+    <!-- 菜品图片 -->
+    <image class="dish-image" src="{{dish.image}}" mode="aspectFill"></image>
+    
+    <!-- 基本信息 -->
+    <view class="dish-info">
+      <view class="dish-name">{{dish.name}}</view>
+      <view class="dish-price price">{{currentSpecification ? currentSpecification.price : dish.price}}</view>
+      <view class="dish-desc" wx:if="{{dish.description}}">{{dish.description}}</view>
+    </view>
+    
+    <!-- 规格选择 -->
+    <view class="section" wx:if="{{dish.specifications && dish.specifications.length > 0}}">
+      <view class="section-title">规格选择</view>
+      <view class="spec-list">
+        <view 
+          class="spec-item {{currentSpecification.id === item.id ? 'active' : ''}}" 
+          wx:for="{{dish.specifications}}" 
+          wx:key="id"
+          bindtap="selectSpecification"
+          data-id="{{item.id}}"
+        >
+          <text>{{item.name}}</text>
+          <text class="spec-price price">{{item.price}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 数量选择 -->
+    <view class="section">
+      <view class="section-title">数量</view>
+      <view class="quantity-control">
+        <view class="quantity-btn minus {{quantity <= 1 ? 'disabled' : ''}}" bindtap="decreaseQuantity">-</view>
+        <view class="quantity-num">{{quantity}}</view>
+        <view class="quantity-btn plus" bindtap="increaseQuantity">+</view>
+      </view>
+    </view>
+  </block>
+  
+  <!-- 空状态提示 -->
+  <view class="empty-state" wx:if="{{!dish}}">
+    <view class="empty-icon">
+      <icon type="info" size="45" color="#cccccc"/>
+    </view>
+    <view class="empty-text">暂无菜品信息</view>
+  </view>
+  
+  <!-- 底部操作栏 -->
+  <view class="footer-bar safe-bottom" wx:if="{{dish}}">
+    <view class="action-btn add-cart" bindtap="addToCart">加入购物车</view>
+    <view class="action-btn order-now" bindtap="orderNow">立即下单</view>
+  </view>
+</view>

@@ -1,0 +1,270 @@
+/* 主题色变量定义 */
+:root {
+  /* 主题颜色 */
+  --primary-color: #FF5722;
+  --primary-color-light: #FFCCBC;
+  --primary-color-dark: #E64A19;
+  
+  /* 辅助颜色 */
+  --secondary-color: #009688;
+  --secondary-color-light: #B2DFDB;
+  --secondary-color-dark: #00796B;
+  
+  /* 常用色彩 */
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --danger-color: #F44336;
+  --info-color: #2196F3;
+  
+  /* 文本颜色 */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-hint: #999999;
+  --text-disabled: #CCCCCC;
+  --text-white: #FFFFFF;
+  
+  /* 背景颜色 */
+  --bg-color: #F5F5F5;
+  --bg-card: #FFFFFF;
+  --bg-mask: rgba(0, 0, 0, 0.5);
+  
+  /* 边框颜色 */
+  --border-color: #EEEEEE;
+  --border-color-dark: #DDDDDD;
+  
+  /* 阴影颜色 */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 主题相关通用样式 */
+.primary-bg {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+}
+
+.primary-text {
+  color: var(--primary-color);
+}
+
+.secondary-bg {
+  background-color: var(--secondary-color);
+  color: var(--text-white);
+}
+
+.secondary-text {
+  color: var(--secondary-color);
+}
+
+/* 卡片样式 */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 8rpx;
+  box-shadow: 0 2rpx 10rpx var(--shadow-color);
+  margin: 16rpx;
+  padding: 24rpx;
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  border: none;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1rpx solid var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-white);
+  border: none;
+}
+
+.btn-secondary-outline {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 1rpx solid var(--secondary-color);
+}
+
+/* 标签样式 */
+.tag {
+  display: inline-block;
+  padding: 4rpx 12rpx;
+  font-size: 24rpx;
+  border-radius: 4rpx;
+}
+
+.tag-primary {
+  background-color: var(--primary-color-light);
+  color: var(--primary-color-dark);
+}
+
+.tag-secondary {
+  background-color: var(--secondary-color-light);
+  color: var(--secondary-color-dark);
+}
+
+/* 状态样式 */
+.status-success {
+  color: var(--success-color);
+}
+
+.status-warning {
+  color: var(--warning-color);
+}
+
+.status-danger {
+  color: var(--danger-color);
+}
+
+.status-info {
+  color: var(--info-color);
+}
+
+/* 分割线 */
+.divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 20rpx 0;
+}
+
+/* 内边距 */
+.padding {
+  padding: 30rpx;
+}
+
+.padding-sm {
+  padding: 20rpx;
+}
+
+.padding-xs {
+  padding: 10rpx;
+}
+
+/* 外边距 */
+.margin {
+  margin: 30rpx;
+}
+
+.margin-sm {
+  margin: 20rpx;
+}
+
+.margin-xs {
+  margin: 10rpx;
+}
+
+/* 圆角 */
+.radius {
+  border-radius: 8rpx;
+}
+
+.radius-lg {
+  border-radius: 16rpx;
+}
+
+.radius-xl {
+  border-radius: 24rpx;
+}
+
+/* 文本样式 */
+.text-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-cut {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* 常用布局 */
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+/* flex 子元素 */
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+} 

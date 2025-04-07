@@ -1,0 +1,67 @@
+<!-- pages/cart/cart.wxml -->
+<view class="container">
+  <!-- 购物车为空 -->
+  <view class="empty-cart" wx:if="{{cartList.length === 0}}">
+    <view class="empty-icon">
+      <icon type="info" size="50" color="#cccccc"/>
+    </view>
+    <view class="empty-text">购物车空空如也，去点餐吧</view>
+    <button class="go-order-btn" bindtap="goToCategory">去点餐</button>
+  </view>
+  
+  <!-- 购物车有商品 -->
+  <block wx:else>
+    <!-- 清空购物车按钮 -->
+    <view class="cart-header" wx:if="{{cartList.length > 0}}">
+      <view class="cart-title">购物车</view>
+      <view class="clear-cart" bindtap="showClearCartDialog">
+        <icon type="clear" size="18" color="#999999" class="clear-icon"/>
+        <text>清空购物车</text>
+      </view>
+    </view>
+    
+    <!-- 购物车列表 -->
+    <view class="cart-list">
+      <view class="cart-item" wx:for="{{cartList}}" wx:key="index">
+        <!-- 选择框 -->
+        <view class="select-box" bindtap="toggleSelect" data-index="{{index}}">
+          <icon type="{{selectedItems.indexOf(index) > -1 ? 'success' : 'circle'}}" size="20" color="{{selectedItems.indexOf(index) > -1 ? '#FF5722' : '#999'}}"></icon>
+        </view>
+        
+        <!-- 商品信息 -->
+        <image class="item-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="item-info">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-spec" wx:if="{{item.specificationName}}">规格：{{item.specificationName}}</view>
+          <view class="item-bottom">
+            <view class="item-price price">{{item.price}}</view>
+            
+            <!-- 数量控制 -->
+            <view class="quantity-control">
+              <view class="quantity-btn minus" bindtap="decreaseQuantity" data-index="{{index}}">-</view>
+              <view class="quantity-num">{{item.quantity}}</view>
+              <view class="quantity-btn plus" bindtap="increaseQuantity" data-index="{{index}}">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  
+  <!-- 底部结算栏 -->
+  <view class="footer-bar safe-bottom" wx:if="{{cartList.length > 0}}">
+    <view class="select-all" bindtap="toggleSelectAll">
+      <icon type="{{isAllSelected ? 'success' : 'circle'}}" size="20" color="{{isAllSelected ? '#FF5722' : '#999'}}"></icon>
+      <text>全选</text>
+    </view>
+    
+    <view class="total-info">
+      <text>合计：</text>
+      <view class="total-price price">{{totalAmount}}</view>
+    </view>
+    
+    <view class="checkout-btn" bindtap="checkout">
+      结算({{totalQuantity}})
+    </view>
+  </view>
+</view> 

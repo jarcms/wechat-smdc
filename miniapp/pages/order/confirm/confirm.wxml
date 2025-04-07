@@ -1,0 +1,76 @@
+<!-- pages/order/confirm/confirm.wxml -->
+<view class="container">
+  <!-- 桌位信息 -->
+  <view class="section table-info">
+    <view class="section-title">桌位信息</view>
+    <view class="table-content">
+      <view class="table-name">{{tableName}}</view>
+      <view class="table-code">桌号：{{tableCode}}</view>
+    </view>
+  </view>
+  
+  <!-- 订单商品列表 -->
+  <view class="section order-items">
+    <view class="section-title">已选商品</view>
+    <view class="item-list">
+      <view class="order-item" wx:for="{{cartList}}" wx:key="index">
+        <image class="item-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="item-info">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-spec" wx:if="{{item.specificationName}}">规格：{{item.specificationName}}</view>
+          <view class="item-bottom">
+            <view class="item-price price">{{item.price}}</view>
+            <view class="item-quantity">x{{item.quantity}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="order-total">
+      <text>共{{cartList.length}}件商品，合计：</text>
+      <view class="total-price price">{{totalAmount}}</view>
+    </view>
+  </view>
+  
+  <!-- 支付方式 -->
+  <view class="section payment-method">
+    <view class="section-title">支付方式</view>
+    <view class="payment-list">
+      <view 
+        class="payment-item {{item.selected ? 'active' : ''}}" 
+        wx:for="{{payMethods}}" 
+        wx:key="id"
+        bindtap="selectPayMethod"
+        data-id="{{item.id}}"
+      >
+        <view class="payment-left">
+          <icon type="success" size="24" color="#FF5722" class="payment-icon"/>
+          <text>{{item.name}}</text>
+        </view>
+        <icon type="success" size="20" color="#FF5722" wx:if="{{item.selected}}"></icon>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 备注 -->
+  <view class="section remark">
+    <view class="section-title">备注</view>
+    <textarea 
+      class="remark-input" 
+      placeholder="请输入备注信息（可选）" 
+      maxlength="100"
+      bindinput="onRemarkInput"
+      value="{{remark}}"
+    ></textarea>
+  </view>
+  
+  <!-- 底部操作栏 -->
+  <view class="footer-bar safe-bottom">
+    <view class="total-info">
+      <text>合计：</text>
+      <view class="total-amount price">{{totalAmount}}</view>
+    </view>
+    <view class="submit-btn {{isSubmitting ? 'disabled' : ''}}" bindtap="submitOrder">
+      {{isSubmitting ? '提交中...' : '提交订单'}}
+    </view>
+  </view>
+</view>

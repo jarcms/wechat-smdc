@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "菜品分类",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "cart-bar": "/components/cart-bar/cart-bar"
+  }
+} 
